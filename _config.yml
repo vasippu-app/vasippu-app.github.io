@@ -4,7 +4,7 @@
 ###################################
 #
 title: Vasippu
-email: dvlpr.anand@gmail.com
+email: vasippu.com@gmail.com
 description: A clean, minimal, responsive Jekyll blog theme
 url: "https://vasippu-app.github.io"
 baseurl: ""
@@ -38,7 +38,7 @@ owner:
   avatar: avatar.png
   job: "Reading & Writing Space"
   bio: "Thoughts, articles, and minimalist notes."
-  email: dvlpr.anand@gmail.com
+  email: vasippu.com@gmail.com
   disqus-shortname:
   twitter:
   facebook:
