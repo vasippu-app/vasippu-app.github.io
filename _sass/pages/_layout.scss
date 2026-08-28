@@ -5,7 +5,19 @@ aside.table.cover {
   top: 2rem;
 
   @media (max-width: 768px) {
-    position: static;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    height: 380px;
+    padding: 1.5rem 1rem;
+    background: $light-bg;
+    overflow: hidden;
+
+    body.dark-mode & {
+      background: $dark-bg;
+    }
   }
 }
 
@@ -25,10 +37,21 @@ aside.table.cover {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   }
 
+  @media (max-width: 768px) {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0.5rem 1rem !important;
+  }
+
   .avatar-container {
     position: relative;
     display: inline-block;
     margin: 0 auto 1.25rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 0.75rem;
+    }
 
     &:after {
       content: '';
@@ -57,6 +80,11 @@ aside.table.cover {
     display: block;
     border: 3px solid #ffffff;
 
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+    }
+
     body.dark-mode & {
       border-color: #151c2c;
     }
@@ -70,6 +98,10 @@ aside.table.cover {
     color: inherit;
     margin-bottom: 0.25rem;
     letter-spacing: -0.015em;
+
+    @media (max-width: 768px) {
+      font-size: 1.2rem;
+    }
   }
 
   .author_job {
@@ -80,6 +112,10 @@ aside.table.cover {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 0.75rem;
+
+    @media (max-width: 768px) {
+      margin-bottom: 0.4rem;
+    }
 
     body.dark-mode & {
       color: #a5b4fc;
@@ -93,6 +129,11 @@ aside.table.cover {
     line-height: 1.5;
     margin-bottom: 1.5rem;
 
+    @media (max-width: 768px) {
+      margin-bottom: 0.75rem;
+      font-size: 0.825rem;
+    }
+
     body.dark-mode & {
       color: $dark-text-secondary;
     }
@@ -104,6 +145,12 @@ aside.table.cover {
   border-top: 1px solid $light-card-border;
   border-bottom: 1px solid $light-card-border;
   padding: 1rem 0;
+
+  @media (max-width: 768px) {
+    margin: 0.5rem 0;
+    padding: 0.4rem 0;
+    border-color: transparent;
+  }
 
   body.dark-mode & {
     border-color: $dark-card-border;
@@ -117,6 +164,12 @@ aside.table.cover {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.75rem;
+  }
 }
 
 .nav-item a {
@@ -129,6 +182,13 @@ aside.table.cover {
   font-weight: 500;
   color: $light-text-secondary;
   transition: all 0.2s ease;
+
+  @media (max-width: 768px) {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.825rem;
+    border-radius: $border-radius-pill;
+    background: rgba(148, 163, 184, 0.1);
+  }
 
   body.dark-mode & {
     color: $dark-text-secondary;
@@ -147,6 +207,10 @@ aside.table.cover {
 
 .social-links {
   margin-top: 1.25rem;
+
+  @media (max-width: 768px) {
+    display: none; // Hide extra icons on compact mobile header
+  }
 
   ul {
     list-style: none;

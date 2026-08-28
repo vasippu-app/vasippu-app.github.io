@@ -1,4 +1,4 @@
-// Modern Flexbox Grid System
+// Modern Responsive Grid System with Parallax Mobile Layout
 
 .container {
   margin: 0 auto;
@@ -18,8 +18,9 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 1rem;
-    gap: 1.5rem;
+    padding: 0;
+    gap: 0;
+    max-width: 100%;
   }
 }
 

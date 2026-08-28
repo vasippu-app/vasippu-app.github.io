@@ -1,3 +1,20 @@
+.main-content {
+  @media (max-width: 768px) {
+    position: relative;
+    z-index: 2;
+    margin-top: 310px;
+    background: $light-bg;
+    border-radius: 24px 24px 0 0;
+    padding: 1.5rem 1.25rem 3rem;
+    box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.08);
+
+    body.dark-mode & {
+      background: $dark-bg;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
 .post-listing {
   display: flex;
   flex-direction: column;
@@ -66,6 +83,10 @@
   box-shadow: $shadow-sm;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 
+  @media (max-width: 768px) {
+    padding: 1.5rem 1.25rem;
+  }
+
   body.dark-mode & {
     background: $dark-card-bg;
     border-color: $dark-card-border;
@@ -110,6 +131,10 @@
     letter-spacing: -0.015em;
     color: inherit;
 
+    @media (max-width: 768px) {
+      font-size: 1.25rem;
+    }
+
     a {
       color: inherit;
       transition: color 0.2s ease;
@@ -152,6 +177,10 @@
   padding: 2.75rem 2.5rem;
   box-shadow: $shadow-sm;
 
+  @media (max-width: 768px) {
+    padding: 1.75rem 1.25rem 3rem;
+  }
+
   body.dark-mode & {
     background: $dark-card-bg;
     border-color: $dark-card-border;
@@ -166,6 +195,10 @@
       margin-top: 0;
       margin-bottom: 0.85rem;
       line-height: 1.25;
+
+      @media (max-width: 768px) {
+        font-size: 1.65rem;
+      }
     }
   }
 
