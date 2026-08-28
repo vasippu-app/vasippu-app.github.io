@@ -4,6 +4,7 @@ title: "Getting Started with Vasippu Theme"
 date: 2026-08-28 09:00:00 +0000
 categories: [Guide, Jekyll]
 tags: [tutorial, vasippu, design]
+image: /img/new_avatar_light.webp
 ---
 
 Discover how to write, customize, and publish your content effortlessly with **Vasippu**, a lightweight and responsive Jekyll theme.

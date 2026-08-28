@@ -4,6 +4,7 @@ title: "Welcome to Vasippu"
 date: 2026-08-28 08:00:00 +0000
 categories: [General, Announcement]
 tags: [jekyll, theme, vasippu]
+image: /img/new_avatar_light.webp
 ---
 
 Welcome to **Vasippu**! This is a clean, responsive, sidebar-driven Jekyll blog theme built for clarity and elegant readability.
