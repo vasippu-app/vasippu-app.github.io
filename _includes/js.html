@@ -57,7 +57,7 @@
       });
     }
 
-    // --- 3. Enhanced Code Block Wrapper & Copy Handler ---
+    // --- 3. Code Block Header & Copy Button ---
     var codeBlocks = document.querySelectorAll('pre');
     codeBlocks.forEach(function(pre) {
       var parent = pre.parentNode;
@@ -65,23 +65,32 @@
         var wrapper = document.createElement('div');
         wrapper.className = 'highlight-wrapper';
 
-        // Code header title bar
+        // Extract language from parent class (e.g. language-kotlin -> kotlin)
+        var lang = 'code';
+        var codeElem = pre.querySelector('code');
+        if (codeElem && codeElem.className) {
+          var match = codeElem.className.match(/language-(\w+)/);
+          if (match) lang = match[1];
+        } else if (parent.className) {
+          var matchP = parent.className.match(/language-(\w+)/);
+          if (matchP) lang = matchP[1];
+        }
+
+        // Code header title bar with left dots/label & right copy button
         var header = document.createElement('div');
         header.className = 'code-header';
-        header.innerHTML = '<div class="code-dots"><span></span><span></span><span></span></div><span class="code-title">Code</span>';
-        wrapper.appendChild(header);
+        
+        var leftGroup = document.createElement('div');
+        leftGroup.className = 'code-header-left';
+        leftGroup.innerHTML = '<div class="code-dots"><span></span><span></span><span></span></div><span class="code-title">' + lang + '</span>';
 
-        parent.insertBefore(wrapper, pre);
-        wrapper.appendChild(pre);
-
-        // Copy button
         var copyBtn = document.createElement('button');
         copyBtn.className = 'copy-code-btn';
         copyBtn.type = 'button';
         copyBtn.innerText = 'Copy';
 
         copyBtn.addEventListener('click', function() {
-          var codeText = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+          var codeText = codeElem ? codeElem.innerText : pre.innerText;
           navigator.clipboard.writeText(codeText).then(function() {
             copyBtn.innerText = 'Copied!';
             copyBtn.classList.add('copied');
@@ -94,7 +103,12 @@
           });
         });
 
-        wrapper.appendChild(copyBtn);
+        header.appendChild(leftGroup);
+        header.appendChild(copyBtn);
+
+        parent.insertBefore(wrapper, pre);
+        wrapper.appendChild(header);
+        wrapper.appendChild(pre);
       }
     });
 

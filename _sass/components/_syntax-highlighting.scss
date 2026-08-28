@@ -11,12 +11,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.85rem;
     background: #0f172a;
     border-bottom: 1px solid #334155;
     font-family: $font-code;
     font-size: 0.75rem;
-    color: #94a3b8;
+
+    .code-header-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
     .code-dots {
       display: flex;
@@ -26,10 +31,47 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
+        display: inline-block;
 
         &:nth-child(1) { background: #ff5f56; }
         &:nth-child(2) { background: #ffbd2e; }
         &:nth-child(3) { background: #27c93f; }
+      }
+    }
+
+    .code-title {
+      color: #94a3b8;
+      font-weight: 500;
+      text-transform: lowercase;
+      letter-spacing: 0.03em;
+    }
+
+    .copy-code-btn {
+      position: static !important;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.25rem 0.65rem;
+      font-family: $font-body;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: $border-radius-sm;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(99, 102, 241, 0.8);
+        color: #ffffff;
+        border-color: transparent;
+      }
+
+      &.copied {
+        background: #10b981;
+        color: #ffffff;
+        border-color: transparent;
       }
     }
   }
@@ -48,35 +90,6 @@
       font-family: inherit;
       background: transparent;
       padding: 0;
-    }
-  }
-
-  .copy-code-btn {
-    position: absolute;
-    top: 0.45rem;
-    right: 0.75rem;
-    padding: 0.25rem 0.65rem;
-    font-family: $font-body;
-    font-size: 0.75rem;
-    font-weight: 600;
-    background: rgba(255, 255, 255, 0.1);
-    color: #cbd5e1;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: $border-radius-sm;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-
-    &:hover {
-      background: rgba(99, 102, 241, 0.8);
-      color: #ffffff;
-      border-color: transparent;
-    }
-
-    &.copied {
-      background: #10b981;
-      color: #ffffff;
-      border-color: transparent;
     }
   }
 }
