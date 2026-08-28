@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div style="margin-bottom: 1.5rem;">
+  <a class="btn" href="{{ "/" | relative_url }}">
+    <i class="fa fa-arrow-left"></i> Back to Home
+  </a>
+</div>
+
+{% if page.image.feature %}
+<div class="post-image-feature" style="margin-bottom: 1.5rem; overflow: hidden; border-radius: 16px;">
+  <img class="feature-image" src=
+  {% if page.image.feature contains 'https' or page.image.feature contains 'http' %}
+  "{{ page.image.feature }}"
+  {% else %}
+  "{{ "/img/" | append: page.image.feature | relative_url }}"
+  {% endif %}
+  alt="{{ page.title | escape }}" style="width: 100%; height: auto; display: block;">
+</div>
+{% endif %}
+
+<div id="post">
+  <header class="post-header">
+    <h1 title="{{ page.title | escape }}">{{ page.title }}</h1>
+    <div class="post-meta" style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; color: #64748b; font-size: 0.875rem;">
+      <span class="post-date"><i class="fa fa-calendar-o"></i> {{ page.date | date: "%-d %b %Y" | upcase }}</span>
+      •
+      <span class="read-time"><i class="fa fa-clock-o"></i> {% include read_time.html %}</span>
+      {% if page.categories.size > 0 %}
+      •
+      {% for cat in page.categories %}
+        <span class="post-cat"><i class="fa fa-folder-o"></i> {{ cat }}</span>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </header>
+
+  <article class="post-content">
+    {{ content }}
+  </article>
+
+  {% if page.tags.size > 0 %}
+  <div style="margin-top: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+    {% for tag in page.tags %}
+      <span class="tag-pill">#{{ tag }}</span>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <div class="share-buttons">
+    <h6>Share this article</h6>
+    <ul>
+      <li>
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" class="share-btn twitter-btn" title="Share on Twitter" target="_blank"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" class="share-btn linkedin-btn" title="Share on LinkedIn" target="_blank"><i class="fa fa-linkedin"></i><span>LinkedIn</span></a>
+      </li>
+      <li>
+        <a href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" class="share-btn reddit-btn" title="Share on Reddit" target="_blank"><i class="fa fa-reddit"></i><span>Reddit</span></a>
+      </li>
+      <li>
+        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url }}" class="share-btn email-btn" title="Share via Email" target="_blank"><i class="fa fa-envelope"></i><span>Email</span></a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+  <i class="fa fa-chevron-up"></i>
+</button>

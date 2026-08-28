@@ -1,0 +1,51 @@
+#
+###################################
+# Site wide configuration
+###################################
+#
+title: Vasippu
+email: info@vasippu.org
+description: A clean, minimal, responsive Jekyll blog theme
+url: "https://vasippu.github.io"
+baseurl: ""
+keywords: ["Jekyll", "Blog", "Vasippu", "Minimal", "Responsive"]
+future: true
+
+#
+###################################
+# Jekyll configuration
+###################################
+#
+timezone: Europe/Paris
+markdown: kramdown
+highlighter: rouge
+excerpt_separator: <!--more-->
+permalink: /articles/:year-:month/:title
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+
+#
+###################################
+# Site Owner configuration
+###################################
+#
+owner:
+  name: Vasippu
+  avatar: avatar.png
+  job: "Reading & Writing Space"
+  bio: "Thoughts, articles, and minimalist notes."
+  email: info@vasippu.org
+  disqus-shortname:
+  twitter:
+  facebook:
+  github:
+  linkedin:
+
+plugins:
+  - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap

@@ -1,0 +1,55 @@
+---
+layout: default
+---
+
+<div class="search-container">
+  <i class="fa fa-search search-icon"></i>
+  <input type="text" id="search-input" class="search-input" placeholder="Search articles by title, tag, or category..." aria-label="Search articles">
+</div>
+
+<div class="post-listing" id="post-list">
+  {% for post in site.posts %}
+  <article class="post-card" data-title="{{ post.title | downcase }}" data-tags="{{ post.tags | join: ' ' | downcase }}" data-categories="{{ post.categories | join: ' ' | downcase }}">
+    <header class="post-header">
+      <div class="post-meta">
+        <span class="post-date">
+          <i class="fa fa-calendar-o"></i> {{ post.date | date: "%-d %b %Y" | upcase }}
+        </span>
+        {% if post.categories.size > 0 %}
+        •
+        {% for cat in post.categories %}
+          <span class="post-cat"><i class="fa fa-folder-o"></i> {{ cat }}</span>
+        {% endfor %}
+        {% endif %}
+        •
+        <span class="read-time"><i class="fa fa-clock-o"></i> {% assign content = post.content %}{% include read_time.html %}</span>
+      </div>
+      <h2 class="post-title">
+        <a href="{{ post.url | relative_url }}" title="{{ post.title | escape }}">{{ post.title }}</a>
+        {% if post.link %}
+        <a class="post-title-link" href="{{ post.link }}" target="_blank" title="External link"><i class="fa fa-external-link"></i></a>
+        {% endif %}
+      </h2>
+    </header>
+
+    {% if post.excerpt %}
+    <div class="post-description">
+      <p>{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+    </div>
+    {% endif %}
+
+    {% if post.tags.size > 0 %}
+    <div class="post-tags" style="margin-top: 1rem; display: flex; gap: 0.4rem; flex-wrap: wrap;">
+      {% for tag in post.tags %}
+        <span class="tag-pill">#{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+
+<div id="no-results" style="display: none; text-align: center; padding: 3rem 1rem; color: #64748b;">
+  <i class="fa fa-search-minus" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+  <p style="font-size: 1.1rem; font-weight: 500;">No matching articles found.</p>
+</div>

@@ -1,0 +1,51 @@
+// Modern Flexbox Grid System
+
+.container {
+  margin: 0 auto;
+  max-width: 1140px;
+  width: 92%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  gap: 2rem;
+  align-items: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+}
+
+.col {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+@media (min-width: 769px) {
+  .col.m3 {
+    flex: 0 0 290px !important;
+    width: 290px !important;
+    max-width: 290px !important;
+  }
+
+  .col.m9 {
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .col.s12 {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}

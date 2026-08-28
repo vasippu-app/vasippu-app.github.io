@@ -1,0 +1,108 @@
+.highlight-wrapper {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  background: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background: #0f172a;
+    border-bottom: 1px solid #334155;
+    font-family: $font-code;
+    font-size: 0.75rem;
+    color: #94a3b8;
+
+    .code-dots {
+      display: flex;
+      gap: 6px;
+
+      span {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+
+        &:nth-child(1) { background: #ff5f56; }
+        &:nth-child(2) { background: #ffbd2e; }
+        &:nth-child(3) { background: #27c93f; }
+      }
+    }
+  }
+
+  pre {
+    margin: 0;
+    padding: 1.25rem;
+    font-family: $font-code;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    background: transparent;
+    color: #e2e8f0;
+
+    code {
+      font-family: inherit;
+      background: transparent;
+      padding: 0;
+    }
+  }
+
+  .copy-code-btn {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    font-family: $font-body;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+
+    &:hover {
+      background: rgba(99, 102, 241, 0.8);
+      color: #ffffff;
+      border-color: transparent;
+    }
+
+    &.copied {
+      background: #10b981;
+      color: #ffffff;
+      border-color: transparent;
+    }
+  }
+}
+
+// Inline code styling
+p code, li code {
+  font-family: $font-code;
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  background: rgba(99, 102, 241, 0.1);
+  color: $primary;
+
+  body.dark-mode & {
+    background: rgba(99, 102, 241, 0.2);
+    color: #a5b4fc;
+  }
+}
+
+// Rouge Syntax Token Highlight Colors
+.highlight {
+  .c, .c1, .cm { color: #64748b; font-style: italic; } // Comments
+  .k, .kd, .kn, .kr { color: #f43f5e; font-weight: 600; } // Keywords
+  .s, .s1, .s2 { color: #10b981; } // Strings
+  .na, .nc, .nf { color: #38bdf8; } // Function / Class names
+  .no, .nv { color: #fbbf24; } // Constants / Variables
+  .o, .ow { color: #c084fc; } // Operators
+  .m, .mi, .mf { color: #f97316; } // Numbers
+}
