@@ -1,9 +1,17 @@
-{% if page.author %} {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %} {% endif %}
+{% if page.author %} {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}{% endif %}
 
 <div class="cover-card table-cell table-middle">
-  {% if author.avatar %}
+  {% if author.avatar_light or author.avatar_dark or author.avatar %}
   <a href="{{ "/" | relative_url }}" class="avatar-container">
+    {% if author.avatar_light %}
+    <img src="{{ "/img/" | append: author.avatar_light | relative_url }}" alt="{{ author.name }}" class="avatar avatar-light">
+    {% endif %}
+    {% if author.avatar_dark %}
+    <img src="{{ "/img/" | append: author.avatar_dark | relative_url }}" alt="{{ author.name }}" class="avatar avatar-dark">
+    {% endif %}
+    {% if author.avatar and author.avatar_light == nil and author.avatar_dark == nil %}
     <img src="{{ "/img/" | append: author.avatar | relative_url }}" alt="{{ author.name }}" class="avatar">
+    {% endif %}
   </a>
   {% endif %}
   <a href="{{ "/" | relative_url }}" class="author_name">{{ author.name }}</a>

@@ -90,6 +90,22 @@ aside.table.cover {
     }
   }
 
+  .avatar-light {
+    display: block;
+
+    html.dark-mode &, body.dark-mode & {
+      display: none !important;
+    }
+  }
+
+  .avatar-dark {
+    display: none;
+
+    html.dark-mode &, body.dark-mode & {
+      display: block !important;
+    }
+  }
+
   .author_name {
     display: block;
     font-family: $font-heading;

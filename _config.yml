@@ -35,14 +35,16 @@ kramdown:
 #
 owner:
   name: Vasippu
-  avatar: avatar.png
+  avatar_light: new_avatar_light.webp
+  avatar_dark: new_avatar_dark.webp
+  avatar: new_avatar_light.webp
   job: "Reading & Writing Space"
   bio: "Thoughts, articles, and minimalist notes."
   email: vasippu.com@gmail.com
   disqus-shortname:
   twitter:
   facebook:
-  github: vasippu-app
+  github: 
   linkedin:
 
 plugins:

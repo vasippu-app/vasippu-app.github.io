@@ -24,7 +24,6 @@
   {% seo %}
 
   <!-- CSS files -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{{ "/css/font-awesome.min.css" | relative_url }}">
   <link rel="stylesheet" href="{{ "/css/main.css" | relative_url }}">
 
@@ -40,7 +39,10 @@
   </script>
   {% endif %}
 
-  <!-- Icons -->
-  <link rel="shortcut icon" href="{{ "/favicon.ico" | relative_url }}">
-  <link rel="shortcut icon" href="{{ "/favicon.png" | relative_url }}">
+  <!-- Icons / Favicons -->
+  <link rel="icon" type="image/png" sizes="96x96" href="{{ "/img/favicons/favicon-96x96.png" | relative_url }}">
+  <link rel="icon" type="image/svg+xml" href="{{ "/img/favicons/favicon.svg" | relative_url }}">
+  <link rel="shortcut icon" href="{{ "/img/favicons/favicon.ico" | relative_url }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/img/favicons/apple-touch-icon.png" | relative_url }}">
+  <link rel="manifest" href="{{ "/img/favicons/site.webmanifest" | relative_url }}">
 </head>
