@@ -1,24 +1,25 @@
 ---
 layout: page
-title:  Archive
+title: Archive
 permalink: /archive/
 ---
 
-<div class="archive">
+<div class="archive-page">
   <div class="timeline" id="timeline">
     {% assign posts_by_year = site.posts | group_by_exp:"post", "post.date | date: '%Y' " %}
     {% for group in posts_by_year %}
-      <div class="archive-title">
-        <h4 class="archive-year">{{ group.name }}</h4>
+      <div class="archive-year-group">
+        <h3 class="archive-year"><i class="fa fa-calendar"></i> {{ group.name }}</h3>
+
+        <ul class="archive-post-list">
+        {% for post in group.items %}
+          <li class="archive-post-item">
+            <span class="archive-post-date">{{ post.date | date: "%b %d" }}</span>
+            <a class="archive-post-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
       </div>
-
-      <ul>
-      {% for post in group.items %}
-        <li><div style="width:60px;float:left;">{{ post.date | date: "%b %-d" }}</div> <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
-      {% endfor %}
-      </ul>
-
     {% endfor %}
   </div>
-
 </div>
