@@ -127,5 +127,29 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+
+    // --- 5. Share Bar Copy Link Button ---
+    var copyShareBtn = document.getElementById('copy-share-link');
+    var copyShareIcon = document.getElementById('copy-share-icon');
+    var copyShareText = document.getElementById('copy-share-text');
+
+    if (copyShareBtn) {
+      copyShareBtn.addEventListener('click', function() {
+        var targetUrl = copyShareBtn.getAttribute('data-url') || window.location.href;
+        navigator.clipboard.writeText(targetUrl).then(function() {
+          if (copyShareIcon) copyShareIcon.className = 'fa fa-check';
+          if (copyShareText) copyShareText.innerText = 'Copied!';
+          copyShareBtn.classList.add('copied');
+
+          setTimeout(function() {
+            if (copyShareIcon) copyShareIcon.className = 'fa fa-link';
+            if (copyShareText) copyShareText.innerText = 'Copy Link';
+            copyShareBtn.classList.remove('copied');
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Failed to copy share link: ', err);
+        });
+      });
+    }
   });
 </script>

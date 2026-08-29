@@ -1,0 +1,29 @@
+<div class="share-bar">
+  <span class="share-title"><i class="fa fa-share-alt"></i> Share this article:</span>
+  <div class="share-buttons-list">
+    <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" class="share-btn share-twitter" title="Share on X / Twitter" target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-twitter"></i>
+      <span>Twitter</span>
+    </a>
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" class="share-btn share-linkedin" title="Share on LinkedIn" target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-linkedin"></i>
+      <span>LinkedIn</span>
+    </a>
+    <a href="https://api.whatsapp.com/send?text={{ page.title | url_encode }}%20{{ page.url | absolute_url }}" class="share-btn share-whatsapp" title="Share on WhatsApp" target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-whatsapp"></i>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" class="share-btn share-reddit" title="Share on Reddit" target="_blank" rel="noopener noreferrer">
+      <i class="fa fa-reddit"></i>
+      <span>Reddit</span>
+    </a>
+    <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url }}" class="share-btn share-email" title="Share via Email">
+      <i class="fa fa-envelope"></i>
+      <span>Email</span>
+    </a>
+    <button type="button" class="share-btn share-copy" id="copy-share-link" data-url="{{ page.url | absolute_url }}" title="Copy link to clipboard">
+      <i class="fa fa-link" id="copy-share-icon"></i>
+      <span id="copy-share-text">Copy Link</span>
+    </button>
+  </div>
+</div>
