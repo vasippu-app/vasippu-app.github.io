@@ -491,3 +491,17 @@
     box-shadow: 0 8px 22px rgba(99, 102, 241, 0.45);
   }
 }
+
+// Reading Progress Bar
+.reading-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: $primary-gradient;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+  will-change: width;
+}

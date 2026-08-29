@@ -251,5 +251,31 @@
         });
       });
     }
+
+    // --- 6. Reading Progress Bar ---
+    var progressBar = document.getElementById('reading-progress-bar');
+    var postArticle = document.querySelector('.post-content') || document.getElementById('post');
+
+    if (progressBar && postArticle) {
+      function updateReadingProgress() {
+        var articleTop = postArticle.offsetTop;
+        var articleHeight = postArticle.offsetHeight;
+        var windowHeight = window.innerHeight;
+        var scrollTop = window.scrollY;
+
+        var scrollableDistance = articleHeight - windowHeight;
+        if (scrollableDistance <= 0) {
+          progressBar.style.width = '100%';
+          return;
+        }
+
+        var currentProgress = (scrollTop - articleTop) / scrollableDistance;
+        var progressPercent = Math.min(Math.max(currentProgress * 100, 0), 100);
+        progressBar.style.width = progressPercent + '%';
+      }
+
+      window.addEventListener('scroll', updateReadingProgress);
+      updateReadingProgress();
+    }
   });
 </script>
