@@ -103,7 +103,7 @@ p code, li code {
   background: rgba(99, 102, 241, 0.1);
   color: $primary;
 
-  body.dark-mode & {
+  .dark-mode & {
     background: rgba(99, 102, 241, 0.2);
     color: #a5b4fc;
   }

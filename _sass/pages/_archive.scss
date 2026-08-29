@@ -13,7 +13,7 @@
       align-items: center;
       gap: 0.5rem;
 
-      body.dark-mode & {
+      .dark-mode & {
         color: #a5b4fc;
       }
     }
@@ -38,7 +38,7 @@
         color: $light-text-muted;
         min-width: 80px;
 
-        body.dark-mode & {
+        .dark-mode & {
           color: $dark-text-muted;
         }
       }
@@ -49,7 +49,7 @@
         color: $light-text-primary !important;
         transition: color 0.2s ease;
 
-        body.dark-mode & {
+        .dark-mode & {
           color: $dark-text-primary !important;
         }
 

@@ -18,11 +18,10 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-html.dark-mode, body.dark-mode {
-  background-color: $dark-bg;
+html.dark-mode, html.dark-mode body, .dark-mode {
+  background-color: $dark-bg !important;
   color: $dark-text-primary;
 }
 
@@ -74,7 +73,7 @@ blockquote {
   font-style: italic;
   color: $light-text-secondary;
 
-  body.dark-mode & {
+  .dark-mode & {
     color: $dark-text-secondary;
     background: rgba(99, 102, 241, 0.08);
   }
@@ -90,7 +89,7 @@ hr {
   background: $light-card-border;
   margin: 2.25rem 0;
 
-  body.dark-mode & {
+  .dark-mode & {
     background: $dark-card-border;
   }
 }

@@ -1,4 +1,38 @@
-aside.table.cover {
+// Main Overall Site Layout Container
+.site-layout-wrapper {
+  display: flex;
+  gap: 1.75rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.75rem 1.5rem 3rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem 0.75rem 2rem;
+    gap: 1rem;
+  }
+}
+
+.sidebar-column {
+  flex: 0 0 250px;
+  width: 250px;
+
+  @media (max-width: 768px) {
+    flex: none;
+    width: 100%;
+  }
+}
+
+.main-content-column {
+  flex: 1 1 0%;
+  min-width: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.table.cover {
   display: block;
   width: 100%;
   position: sticky;
@@ -10,12 +44,12 @@ aside.table.cover {
     left: 0;
     right: 0;
     z-index: 1;
-    height: 380px;
-    padding: 1.5rem 1rem;
+    height: 360px;
+    padding: 1rem;
     background: $light-bg;
     overflow: hidden;
 
-    body.dark-mode & {
+    .dark-mode & {
       background: $dark-bg;
     }
   }
@@ -26,12 +60,12 @@ aside.table.cover {
   background: $light-card-bg;
   border: 1px solid $light-card-border;
   border-radius: $border-radius-lg;
-  padding: 2.25rem 1.75rem;
+  padding: 2rem 1.15rem;
   text-align: center;
   box-shadow: $shadow-sm;
   transition: all 0.25s ease;
 
-  body.dark-mode & {
+  .dark-mode & {
     background: $dark-card-bg;
     border-color: $dark-card-border;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
@@ -85,7 +119,7 @@ aside.table.cover {
       height: 80px;
     }
 
-    body.dark-mode & {
+    .dark-mode & {
       border-color: #151c2c;
     }
   }
@@ -93,7 +127,7 @@ aside.table.cover {
   .avatar-light {
     display: block;
 
-    html.dark-mode &, body.dark-mode & {
+    .dark-mode & {
       display: none !important;
     }
   }
@@ -101,7 +135,7 @@ aside.table.cover {
   .avatar-dark {
     display: none;
 
-    html.dark-mode &, body.dark-mode & {
+    .dark-mode & {
       display: block !important;
     }
   }
@@ -133,7 +167,7 @@ aside.table.cover {
       margin-bottom: 0.4rem;
     }
 
-    body.dark-mode & {
+    .dark-mode & {
       color: #a5b4fc;
     }
   }
@@ -150,7 +184,7 @@ aside.table.cover {
       font-size: 0.825rem;
     }
 
-    body.dark-mode & {
+    .dark-mode & {
       color: $dark-text-secondary;
     }
   }
@@ -168,7 +202,7 @@ aside.table.cover {
     border-color: transparent;
   }
 
-  body.dark-mode & {
+  .dark-mode & {
     border-color: $dark-card-border;
   }
 }
@@ -206,7 +240,7 @@ aside.table.cover {
     background: rgba(148, 163, 184, 0.1);
   }
 
-  body.dark-mode & {
+  .dark-mode & {
     color: $dark-text-secondary;
   }
 
@@ -214,7 +248,7 @@ aside.table.cover {
     background: rgba(99, 102, 241, 0.08);
     color: $primary !important;
 
-    body.dark-mode & {
+    .dark-mode & {
       background: rgba(99, 102, 241, 0.16);
       color: #a5b4fc !important;
     }
@@ -249,7 +283,7 @@ aside.table.cover {
     color: $light-text-secondary;
     transition: all 0.2s ease;
 
-    body.dark-mode & {
+    .dark-mode & {
       background: rgba(255, 255, 255, 0.06);
       color: $dark-text-secondary;
     }
@@ -276,7 +310,7 @@ aside.table.cover {
     display: none;
   }
 
-  body.dark-mode & {
+  .dark-mode & {
     border-color: $dark-card-border;
     color: $dark-text-muted;
   }
@@ -288,7 +322,7 @@ aside.table.cover {
   border-top: 1px solid $light-card-border;
   text-align: center;
 
-  body.dark-mode & {
+  .dark-mode & {
     border-color: $dark-card-border;
   }
 
@@ -298,7 +332,7 @@ aside.table.cover {
     font-weight: 500;
     color: $light-text-muted;
 
-    body.dark-mode & {
+    .dark-mode & {
       color: $dark-text-muted;
     }
   }

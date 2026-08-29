@@ -4,18 +4,18 @@
 {% include head.html %}
 
 <body>
-  <div class="row">
-    <div class="col s12 m3">
-      <aside class="table cover">
+  <div class="site-layout-wrapper">
+    <aside class="sidebar-column">
+      <div class="table cover">
         {% include sidebar.html %}
-      </aside>
-    </div>
-    <div class="col s12 m9">
-      <main class="main-content">
+      </div>
+    </aside>
+    <main class="main-content-column">
+      <div class="main-content">
         {{ content }}
         {% include footer.html %}
-      </main>
-    </div>
+      </div>
+    </main>
   </div>
   {% include js.html %}
 </body>
