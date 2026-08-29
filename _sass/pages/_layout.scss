@@ -261,3 +261,45 @@ aside.table.cover {
     }
   }
 }
+
+// Sidebar & Main Content Footer Copyright Styling
+.sidebar-copyright {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid $light-card-border;
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: $light-text-muted;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
+  body.dark-mode & {
+    border-color: $dark-card-border;
+    color: $dark-text-muted;
+  }
+}
+
+.site-footer {
+  margin-top: 3rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid $light-card-border;
+  text-align: center;
+
+  body.dark-mode & {
+    border-color: $dark-card-border;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: $light-text-muted;
+
+    body.dark-mode & {
+      color: $dark-text-muted;
+    }
+  }
+}
