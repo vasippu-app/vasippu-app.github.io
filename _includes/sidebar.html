@@ -31,8 +31,18 @@
     </ul>
   </nav>
   {% include social-links.html %}
-  <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle theme">
-    <i class="fa fa-moon-o" id="theme-toggle-icon"></i>
-    <span id="theme-toggle-text">Dark Mode</span>
-  </button>
+  <div class="theme-toggle-container">
+    <button type="button" id="theme-toggle" class="theme-toggle-pill" aria-label="Toggle Light or Dark Theme" title="Toggle theme">
+      <span class="theme-pill-option option-light">
+        <i class="fa fa-sun-o"></i> <span>Light</span>
+      </span>
+      <span class="theme-pill-option option-dark">
+        <i class="fa fa-moon-o"></i> <span>Dark</span>
+      </span>
+      <span class="theme-pill-indicator"></span>
+    </button>
+  </div>
+  <div class="sidebar-copyright">
+    &copy; {{ site.time | date: '%Y' }} {{ site.owner.name }}.
+  </div>
 </div>

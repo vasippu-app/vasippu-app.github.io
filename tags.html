@@ -5,32 +5,47 @@ permalink: /tags/
 ---
 
 <div class="tags-page">
+  <div class="search-container" style="margin-bottom: 1.5rem;">
+    <i class="fa fa-search search-icon"></i>
+    <input type="text" id="tag-search-input" class="search-input" placeholder="Filter tags or article titles..." aria-label="Search tags">
+  </div>
+
   <h4 class="page-subtitle"><i class="fa fa-tags"></i> Tag Cloud</h4>
   
-  <ul class="tag-cloud">
-  {% for tag in site.tags %}
+  <ul class="tag-cloud" id="tag-cloud">
     <li>
-      <a class="post-tag" href="#{{ tag | first | slugize }}">
-        #{{ tag | first }} <span class="tag-count">({{ tag | last | size }})</span>
-      </a>
+      <button type="button" class="post-tag active" data-tag-target="all">
+        <i class="fa fa-th-large"></i> All Tags
+      </button>
     </li>
-  {% endfor %}
+    {% for tag in site.tags %}
+      <li>
+        <button type="button" class="post-tag" data-tag-target="{{ tag | first | slugize }}">
+          #{{ tag | first }} <span class="tag-count">({{ tag | last | size }})</span>
+        </button>
+      </li>
+    {% endfor %}
   </ul>
 
-  <div class="tag-list">
-  {% for tag in site.tags %}
-    <div class="tag-group" id="{{ tag | first | slugize }}">
-      {% capture tag_name %}{{ tag | first }}{% endcapture %}
-      <h3 class="tag-group-title"><i class="fa fa-tag"></i> {{ tag_name }}</h3>
-      <ul class="tag-item-list">
-      {% for post in site.tags[tag_name] %}
-        <li class="tag-item">
-          <span class="tag-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
-          <a class="tag-item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </li>
-      {% endfor %}
-      </ul>
-    </div>
-  {% endfor %}
+  <div class="tag-list" id="tag-list">
+    {% for tag in site.tags %}
+      <div class="tag-group" id="{{ tag | first | slugize }}" data-tag-name="{{ tag | first | downcase }}">
+        {% capture tag_name %}{{ tag | first }}{% endcapture %}
+        <h3 class="tag-group-title"><i class="fa fa-tag"></i> {{ tag_name }}</h3>
+        <ul class="tag-item-list">
+        {% for post in site.tags[tag_name] %}
+          <li class="tag-item" data-title="{{ post.title | downcase }}">
+            <span class="tag-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
+            <a class="tag-item-title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="no-tag-results" style="display: none; text-align: center; padding: 3rem 1rem; color: #64748b;">
+    <i class="fa fa-search-minus" style="font-size: 2.5rem; margin-bottom: 1rem;"></i>
+    <p style="font-size: 1.1rem; font-weight: 500;">No matching tags or articles found.</p>
   </div>
 </div>

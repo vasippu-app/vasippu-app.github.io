@@ -22,7 +22,7 @@ ul.tag-cloud {
     display: inline-flex;
   }
 
-  a.post-tag {
+  a.post-tag, button.post-tag {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -34,7 +34,9 @@ ul.tag-cloud {
     font-weight: 600;
     border: 1px solid $light-card-border;
     box-shadow: $shadow-sm;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
     body.dark-mode & {
       background: rgba(255, 255, 255, 0.06);
@@ -51,6 +53,17 @@ ul.tag-cloud {
 
       .tag-count {
         color: rgba(255, 255, 255, 0.85);
+      }
+    }
+
+    &.active {
+      background: $primary-gradient !important;
+      color: #ffffff !important;
+      border-color: transparent !important;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+
+      .tag-count {
+        color: rgba(255, 255, 255, 0.9) !important;
       }
     }
 

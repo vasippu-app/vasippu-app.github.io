@@ -2,29 +2,14 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. Theme Switcher ---
+    // --- 1. Segmented Theme Switcher ---
     var toggleBtn = document.getElementById('theme-toggle');
-    var toggleIcon = document.getElementById('theme-toggle-icon');
-    var toggleText = document.getElementById('theme-toggle-text');
-
-    function updateThemeIcon() {
-      var isDark = document.body.classList.contains('dark-mode');
-      if (toggleIcon) {
-        toggleIcon.className = isDark ? 'fa fa-sun-o' : 'fa fa-moon-o';
-      }
-      if (toggleText) {
-        toggleText.innerText = isDark ? 'Light Mode' : 'Dark Mode';
-      }
-    }
-
-    updateThemeIcon();
 
     if (toggleBtn) {
       toggleBtn.addEventListener('click', function() {
         var isDark = document.body.classList.toggle('dark-mode');
         document.documentElement.classList.toggle('dark-mode', isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        updateThemeIcon();
       });
     }
 
@@ -92,6 +77,85 @@
         }
       }
     })();
+
+    // --- 2b. Interactive Tags Page Filtering ---
+    var tagSearchInput = document.getElementById('tag-search-input');
+    var tagPills = document.querySelectorAll('#tag-cloud .post-tag');
+    var tagGroups = document.querySelectorAll('.tag-group');
+    var noTagResults = document.getElementById('no-tag-results');
+
+    if (tagPills.length > 0 && tagGroups.length > 0) {
+      var currentSelectedTag = 'all';
+
+      function filterTagsPage() {
+        var query = tagSearchInput ? tagSearchInput.value.toLowerCase().trim() : '';
+        var visibleGroupCount = 0;
+
+        tagGroups.forEach(function(group) {
+          var groupSlug = group.id.toLowerCase();
+          var groupName = group.getAttribute('data-tag-name') || '';
+          var items = group.querySelectorAll('.tag-item');
+          var groupMatchesTag = (currentSelectedTag === 'all' || groupSlug === currentSelectedTag);
+
+          var visibleItemCount = 0;
+          items.forEach(function(item) {
+            var title = item.getAttribute('data-title') || '';
+            var matchesQuery = (query === '' || title.includes(query) || groupName.includes(query));
+
+            if (matchesQuery && groupMatchesTag) {
+              item.style.display = 'flex';
+              visibleItemCount++;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          if (visibleItemCount > 0 && groupMatchesTag) {
+            group.style.display = 'block';
+            visibleGroupCount++;
+          } else {
+            group.style.display = 'none';
+          }
+        });
+
+        if (noTagResults) {
+          noTagResults.style.display = (visibleGroupCount === 0) ? 'block' : 'none';
+        }
+      }
+
+      tagPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          tagPills.forEach(function(p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          currentSelectedTag = pill.getAttribute('data-tag-target') || 'all';
+
+          filterTagsPage();
+
+          if (currentSelectedTag !== 'all') {
+            var targetGroup = document.getElementById(currentSelectedTag);
+            if (targetGroup) {
+              targetGroup.scrollIntoView({ behavior: 'smooth' });
+            }
+            history.pushState(null, null, '#' + currentSelectedTag);
+          } else {
+            history.pushState(null, null, window.location.pathname);
+          }
+        });
+      });
+
+      if (tagSearchInput) {
+        tagSearchInput.addEventListener('input', filterTagsPage);
+      }
+
+      // Check URL hash on page load (e.g. /tags/#jekyll)
+      var hash = window.location.hash ? window.location.hash.replace('#', '').toLowerCase() : '';
+      if (hash) {
+        var targetPill = document.querySelector('#tag-cloud .post-tag[data-tag-target="' + hash + '"]');
+        if (targetPill) {
+          targetPill.click();
+        }
+      }
+    }
 
     // --- 3. Code Block Header & Copy Button ---
     var codeBlocks = document.querySelectorAll('pre');
