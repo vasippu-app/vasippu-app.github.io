@@ -358,6 +358,106 @@
   }
 }
 
+// Related Articles Section
+.related-posts {
+  margin-top: 2.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid $light-card-border;
+
+  body.dark-mode & {
+    border-color: $dark-card-border;
+  }
+
+  .related-posts-heading {
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.25rem;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    body.dark-mode & {
+      color: #a5b4fc;
+    }
+  }
+
+  .related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .related-card {
+    background: rgba(148, 163, 184, 0.05);
+    border: 1px solid $light-card-border;
+    border-radius: $border-radius-md;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+    body.dark-mode & {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: $dark-card-border;
+    }
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: $shadow-md;
+      border-color: rgba(99, 102, 241, 0.35);
+
+      .related-card-title a {
+        color: $primary;
+      }
+    }
+
+    .related-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.775rem;
+      font-weight: 600;
+      color: $light-text-muted;
+      margin-bottom: 0.5rem;
+
+      body.dark-mode & {
+        color: $dark-text-muted;
+      }
+    }
+
+    .related-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0 0 0.5rem 0;
+
+      a {
+        color: $light-text-primary;
+        transition: color 0.2s ease;
+
+        body.dark-mode & {
+          color: $dark-text-primary;
+        }
+      }
+    }
+
+    .related-card-excerpt {
+      font-size: 0.85rem;
+      color: $light-text-secondary;
+      line-height: 1.5;
+      margin: 0;
+
+      body.dark-mode & {
+        color: $dark-text-secondary;
+      }
+    }
+  }
+}
+
 // Floating Back to Top Button
 .back-to-top {
   position: fixed;
