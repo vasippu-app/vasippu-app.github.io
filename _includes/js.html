@@ -2,14 +2,25 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. Segmented Theme Switcher ---
+    // --- 1. Icon-Only Floating Theme Switcher ---
     var toggleBtn = document.getElementById('theme-toggle');
+    var toggleIcon = document.getElementById('theme-toggle-icon');
+
+    function updateThemeIcon() {
+      var isDark = document.documentElement.classList.contains('dark-mode');
+      if (toggleIcon) {
+        toggleIcon.className = isDark ? 'fa fa-sun-o' : 'fa fa-moon-o';
+      }
+    }
+
+    updateThemeIcon();
 
     if (toggleBtn) {
       toggleBtn.addEventListener('click', function() {
         var isDark = document.documentElement.classList.toggle('dark-mode');
         if (document.body) document.body.classList.toggle('dark-mode', isDark);
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        updateThemeIcon();
       });
     }
 
