@@ -7,9 +7,29 @@ layout: default
   <input type="text" id="search-input" class="search-input" placeholder="Search articles by title, tag, or category..." aria-label="Search articles">
 </div>
 
+<div class="filter-bar" id="filter-bar">
+  <button type="button" class="filter-chip active" data-filter="all">
+    <i class="fa fa-th-large"></i> All
+  </button>
+  {% for cat in site.categories %}
+    <button type="button" class="filter-chip" data-filter="cat-{{ cat[0] | slugize }}">
+      <i class="fa fa-folder-o"></i> {{ cat[0] }}
+    </button>
+  {% endfor %}
+  {% for tag in site.tags %}
+    <button type="button" class="filter-chip" data-filter="tag-{{ tag[0] | slugize }}">
+      #{{ tag[0] }}
+    </button>
+  {% endfor %}
+</div>
+
 <div class="post-listing" id="post-list">
   {% for post in site.posts %}
-  <article class="post-card" data-title="{{ post.title | downcase }}" data-tags="{{ post.tags | join: ' ' | downcase }}" data-categories="{{ post.categories | join: ' ' | downcase }}">
+  <article class="post-card" 
+    data-title="{{ post.title | downcase }}" 
+    data-tags="{{ post.tags | join: ' ' | downcase }}" 
+    data-categories="{{ post.categories | join: ' ' | downcase }}"
+    data-filter-slugs="{% for cat in post.categories %}cat-{{ cat | slugize }} {% endfor %}{% for tag in post.tags %}tag-{{ tag | slugize }} {% endfor %}">
     <header class="post-header">
       <div class="post-meta">
         <span class="post-date">

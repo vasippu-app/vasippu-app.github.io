@@ -28,34 +28,70 @@
       });
     }
 
-    // --- 2. Live Client-side Post Search ---
+    // --- 2. Live Client-side Post Search & Category/Tag Filtering ---
     var searchInput = document.getElementById('search-input');
     var postCards = document.querySelectorAll('.post-card');
+    var filterChips = document.querySelectorAll('.filter-chip');
     var noResults = document.getElementById('no-results');
+    var currentFilter = 'all';
 
-    if (searchInput && postCards.length > 0) {
-      searchInput.addEventListener('input', function(e) {
-        var query = e.target.value.toLowerCase().trim();
-        var matchCount = 0;
+    function filterPosts() {
+      var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      var matchCount = 0;
 
-        postCards.forEach(function(card) {
-          var title = card.getAttribute('data-title') || '';
-          var tags = card.getAttribute('data-tags') || '';
-          var categories = card.getAttribute('data-categories') || '';
+      postCards.forEach(function(card) {
+        var title = card.getAttribute('data-title') || '';
+        var tags = card.getAttribute('data-tags') || '';
+        var categories = card.getAttribute('data-categories') || '';
+        var filterSlugs = card.getAttribute('data-filter-slugs') || '';
 
-          if (query === '' || title.includes(query) || tags.includes(query) || categories.includes(query)) {
-            card.style.display = 'block';
-            matchCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
+        var matchesQuery = (query === '' || title.includes(query) || tags.includes(query) || categories.includes(query));
+        var matchesFilter = (currentFilter === 'all' || filterSlugs.includes(currentFilter));
 
-        if (noResults) {
-          noResults.style.display = (matchCount === 0) ? 'block' : 'none';
+        if (matchesQuery && matchesFilter) {
+          card.style.display = 'block';
+          matchCount++;
+        } else {
+          card.style.display = 'none';
         }
       });
+
+      if (noResults) {
+        noResults.style.display = (matchCount === 0) ? 'block' : 'none';
+      }
     }
+
+    if (filterChips.length > 0) {
+      filterChips.forEach(function(chip) {
+        chip.addEventListener('click', function() {
+          filterChips.forEach(function(c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+          currentFilter = chip.getAttribute('data-filter') || 'all';
+          filterPosts();
+        });
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterPosts);
+    }
+
+    // Auto-select filter chip from URL params (?filter=... or ?tag=...)
+    (function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var filterParam = urlParams.get('filter') || urlParams.get('tag') || urlParams.get('category');
+      var hashParam = window.location.hash ? window.location.hash.replace('#', '') : '';
+      var targetSlug = filterParam || hashParam;
+
+      if (targetSlug) {
+        var matchingChip = document.querySelector('.filter-chip[data-filter="tag-' + targetSlug.toLowerCase() + '"]') ||
+                           document.querySelector('.filter-chip[data-filter="cat-' + targetSlug.toLowerCase() + '"]') ||
+                           document.querySelector('.filter-chip[data-filter="' + targetSlug.toLowerCase() + '"]');
+        if (matchingChip) {
+          matchingChip.click();
+        }
+      }
+    })();
 
     // --- 3. Code Block Header & Copy Button ---
     var codeBlocks = document.querySelectorAll('pre');
