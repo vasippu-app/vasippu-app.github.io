@@ -23,6 +23,8 @@ layout: default
         {% endif %}
         •
         <span class="read-time"><i class="fa fa-clock-o"></i> {% assign content = post.content %}{% include read_time.html %}</span>
+        •
+        <span class="word-count"><i class="fa fa-file-text-o"></i> {% assign content = post.content %}{% include word_count.html %}</span>
       </div>
       <h2 class="post-title">
         <a href="{{ post.url | relative_url }}" title="{{ post.title | escape }}">{{ post.title }}</a>

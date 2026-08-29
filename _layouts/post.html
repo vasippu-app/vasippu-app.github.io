@@ -27,6 +27,8 @@ layout: default
       <span class="post-date"><i class="fa fa-calendar-o"></i> {{ page.date | date: "%-d %b %Y" | upcase }}</span>
       •
       <span class="read-time"><i class="fa fa-clock-o"></i> {% include read_time.html %}</span>
+      •
+      <span class="word-count"><i class="fa fa-file-text-o"></i> {% include word_count.html %}</span>
       {% if page.categories.size > 0 %}
       •
       {% for cat in page.categories %}
