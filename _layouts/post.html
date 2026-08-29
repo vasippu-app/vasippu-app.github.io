@@ -50,23 +50,7 @@ layout: default
   </div>
   {% endif %}
 
-  <div class="share-buttons">
-    <h6>Share this article</h6>
-    <ul>
-      <li>
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" class="share-btn twitter-btn" title="Share on Twitter" target="_blank"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-      </li>
-      <li>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" class="share-btn linkedin-btn" title="Share on LinkedIn" target="_blank"><i class="fa fa-linkedin"></i><span>LinkedIn</span></a>
-      </li>
-      <li>
-        <a href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title | url_encode }}" class="share-btn reddit-btn" title="Share on Reddit" target="_blank"><i class="fa fa-reddit"></i><span>Reddit</span></a>
-      </li>
-      <li>
-        <a href="mailto:?subject={{ page.title | url_encode }}&body={{ page.url | absolute_url }}" class="share-btn email-btn" title="Share via Email" target="_blank"><i class="fa fa-envelope"></i><span>Email</span></a>
-      </li>
-    </ul>
-  </div>
+  {% include share-bar.html %}
 </div>
 
 <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
