@@ -4,7 +4,9 @@ title: "Mastering Modern Web Design & Performance in 2026"
 date: 2026-08-29 10:00:00 +0530
 categories: [Guide, Design]
 tags: [tutorial, theme, design, performance]
-image: /img/new_avatar_light.webp
+image:
+  feature: web_design_preview.webp
+  path: /img/web_design_preview.webp
 excerpt: "A comprehensive guide to building ultra-fast, aesthetically wowed static sites with Jekyll, CSS Design Tokens, and responsive micro-interactions."
 ---
 
